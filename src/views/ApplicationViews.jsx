@@ -1,6 +1,7 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { NavBar } from "../navbar/Navbar"
 import { Welcome } from "./Welcome"
+import { NavBar } from "../components/navbar/Navbar"
 
 
 export const ApplicationViews = () => {
@@ -10,7 +11,7 @@ export const ApplicationViews = () => {
                 path="/"
                 element={
                     <>
-                        {/* <NavBar/> */}
+                        <NavBar/>
                         <Outlet/>
                     </>
                 }>
