@@ -5,6 +5,7 @@ import { RetailersList } from "../components/retailers/RetailersList"
 import { NavBar } from "../components/navbar/Navbar"
 import { NursaryList } from "../components/nursaries/NursaryList"
 import { Distributors } from "../components/distributors/Distributors"
+import { RetailerDetails } from "../components/retailers/RetailerDetails"
 
 
 
@@ -23,8 +24,11 @@ export const ApplicationViews = () => {
                 <Route index element={<Welcome/>}/>
                 <Route path='/nursaries' element={<NursaryList />} />
                 <Route path='/distributors' element={<Distributors />} />
-                <Route path="/retailers" element={<RetailersList/>}/>
-                  
+                <Route path="/retailers">
+                    <Route index element={<RetailersList/>}/>
+                    <Route path=":retailerId" element={<RetailerDetails/>}/>
+                </Route>
+                
             </Route>
         </Routes>
     )
