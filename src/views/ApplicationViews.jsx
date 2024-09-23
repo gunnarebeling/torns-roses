@@ -1,6 +1,6 @@
 import { Outlet, Route, Routes } from "react-router-dom"
 import { Welcome } from "./Welcome"
-import { NavBar } from "../navbar/Navbar"
+import { NavBar } from "../components/navbar/Navbar"
 
 export const ApplicationViews = () => {
     return(
@@ -9,7 +9,7 @@ export const ApplicationViews = () => {
                 path="/"
                 element={
                     <>
-                        {/* <NavBar/> */}
+                        <NavBar/>
                         <Outlet/>
                     </>
                 }>
