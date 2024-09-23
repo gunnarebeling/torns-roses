@@ -10,7 +10,7 @@ export const ApplicationViews = () => {
                 path="/"
                 element={
                     <>
-                        {/* <NavBar/> */}
+                        <NavBar/>
                         <Outlet/>
                     </>
                 }>
