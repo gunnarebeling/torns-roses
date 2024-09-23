@@ -1,4 +1,5 @@
 import { Outlet, Route, Routes } from "react-router-dom"
+import { Welcome } from "./Welcome"
 import { NavBar } from "../navbar/Navbar"
 
 export const ApplicationViews = () => {
@@ -8,10 +9,11 @@ export const ApplicationViews = () => {
                 path="/"
                 element={
                     <>
-                        <NavBar/>
+                        {/* <NavBar/> */}
                         <Outlet/>
                     </>
                 }>
+                    <Route index element={<Welcome/>}/>
                 
 
             </Route>
