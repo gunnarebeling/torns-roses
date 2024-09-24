@@ -46,17 +46,16 @@ export const Register = () => {
   }
 
   return (
-    <main style={{ textAlign: "center" }}>
-      <form className="form-login" onSubmit={handleRegister}>
-        <h1>Thorns And Roses</h1>
-        <h2>Please Register</h2>
+    <main className="container-login mt-5 mx-auto pt-5">
+      <form className="form-login mx-auto text-center" onSubmit={handleRegister}>
+      <h1 className="text-center mb-5">Register to Thorns -N- Roses</h1>
         <fieldset>
           <div className="form-group">
             <input
               onChange={updateCustomer}
               type="text"
               id="fullName"
-              className="form-control"
+              className="form-control  mx-auto"
               placeholder="Enter your name"
               required
               autoFocus
@@ -69,7 +68,7 @@ export const Register = () => {
               onChange={updateCustomer}
               type="text"
               id="businessName"
-              className="form-control"
+              className="form-control  mx-auto"
               placeholder="Enter the name of your business"
               required
               autoFocus
@@ -82,7 +81,7 @@ export const Register = () => {
               onChange={updateCustomer}
               type="email"
               id="email"
-              className="form-control"
+              className="form-control mx-auto"
               placeholder="Email address"
               required
             />
@@ -94,7 +93,7 @@ export const Register = () => {
               onChange={updateCustomer}
               type="password"
               id="password"
-              className="form-control"
+              className="form-control mx-auto"
               placeholder="Password"
               required
             />
@@ -102,7 +101,7 @@ export const Register = () => {
         </fieldset>
         <fieldset>
           <div className="form-group">
-            <button className="login-btn btn-info" type="submit">
+            <button className="mt-3 login btn fw-bold" type="submit">
               Register
             </button>
           </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { getAllDistributors } from "../../services/distributorServices/distributorServices"
 import { DistributorsItem } from "./DistributorsItem"
+import "./Distributor.css"
 
 export const DistributorsList = () => {
     const [distributors, setDistributors] = useState([])
@@ -12,8 +13,8 @@ export const DistributorsList = () => {
     }, [])
 
     return (
-        <div className='distributors-list'>
-            <h2>Distributors</h2>
+        <div className='distributors  mt-5 pt-5'>
+            <h1 className="text-center mb-3 mt-5">- Distributors -</h1>
             {distributors.map(distributor => {
                 return (
                     <DistributorsItem distributor={distributor} key={distributor.id} />
