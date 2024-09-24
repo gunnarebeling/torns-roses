@@ -22,7 +22,7 @@ export const RetailerDetails = () => {
     }, [retailerInfo])
     const flowerPrices = (targetflower) => {
         const specificFlower= nurseryFlowers.find( flower => flower.flowerId === targetflower.flowerId && flower.nurseryId === targetflower.nurseryId)
-        const specificFlowerPrice = specificFlower.price
+        const specificFlowerPrice = specificFlower?.price
         const distroMarkup = 1 + targetflower.distributor.markup
         const retailMarkup = 1 + targetflower.retailer.markup
         const priceInFloat = specificFlowerPrice * distroMarkup * retailMarkup
