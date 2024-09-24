@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getRetailerInfo } from "../../services/retailerServices/retailerServices"
-import { getNurseryFlowers } from "../../services/nurseryServices/nurseryServices"
+import { getAllNurseryFlowers } from "../../services/nurseryServices/nurseryServices"
 import { addToCart } from "../../services/shoppingCartServices/shoppingCartService"
 
 export const RetailerDetails = ({currentUser}) => {
@@ -16,7 +16,7 @@ export const RetailerDetails = ({currentUser}) => {
         getRetailerInfo(retailerId).then( res => {
             setRetailerInfo(res)
         })
-        getNurseryFlowers().then( res => {
+        getAllNurseryFlowers().then( res => {
             setNurseryFlowers(res)
         })
     }, [retailerId])
@@ -46,7 +46,7 @@ export const RetailerDetails = ({currentUser}) => {
     }
     const handlePurchase = (event) => {
         const cartObj = {
-            customerId: currentUser.Id,
+            customerId: currentUser,
             retailerId: parseInt(event.target.dataset.retailerid),
             flowerId: parseInt(event.target.dataset.flowerid)
             
@@ -66,11 +66,11 @@ export const RetailerDetails = ({currentUser}) => {
                 <h2>Flowers</h2>
                 {retailerInfo.map(flower => {
                     return (
-                    <li key={flower.id} data-retailerid={flower.retailerId} data-flowerid={flower.flowerId} className="border m-2">
+                    <li key={flower.id} className="border m-2">
                         <p>species: {flower.flower?.species}</p>
                         <p>color: {flower.flower?.color}</p>
                         <p>price: {flowerPrices(flower)} </p>
-                        <button onClick={handlePurchase}>purchase</button>
+                        <button data-retailerid={flower.retailerId} data-flowerid={flower.flowerId} onClick={handlePurchase}>purchase</button>
                     </li>
                     )
                 })}
