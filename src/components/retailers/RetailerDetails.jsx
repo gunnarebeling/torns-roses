@@ -7,6 +7,7 @@ export const RetailerDetails = () => {
     const [retailerInfo, setRetailerInfo] = useState([])
     const [nurseryFlowers, setNurseryFlowers] = useState([])
     const [nurseries, setNurseries] = useState([])
+    const [shoppingCart, setShoppingCart] = useState([])
 
     const {retailerId} = useParams()
 
@@ -58,6 +59,7 @@ export const RetailerDetails = () => {
                         <p>species: {flower.flower?.species}</p>
                         <p>color: {flower.flower?.color}</p>
                         <p>price: {flowerPrices(flower)} </p>
+                        <button onClick={handlePurchase}>purchase</button>
                     </li>
                     )
                 })}
