@@ -15,6 +15,9 @@ export const NavBar = () => {
             <li className='nav-item'>
                 <Link className='nav-link' to='/retailers'>Retailers</Link>
             </li>
+            <li className='nav-item'>
+                <Link className='nav-link' to='/shoppingcart'>Shopping Cart</Link>
+            </li>
             {localStorage.getItem("thorns_roses_user") ? (
                 <li className="nav-item">
                     <Link

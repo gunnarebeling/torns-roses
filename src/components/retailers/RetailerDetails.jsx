@@ -45,10 +45,14 @@ export const RetailerDetails = ({currentUser}) => {
 
     }
     const handlePurchase = (event) => {
+        const targetPrice = event.target.dataset.price
+        const cleanedPriceString = targetPrice.replace(/[^0-9.-]+/g,"")
+        const priceFloat = parseFloat(cleanedPriceString)
         const cartObj = {
             customerId: currentUser,
             retailerId: parseInt(event.target.dataset.retailerid),
-            flowerId: parseInt(event.target.dataset.flowerid)
+            flowerId: parseInt(event.target.dataset.flowerid),
+            price: priceFloat
             
         }
         addToCart(cartObj)
@@ -70,7 +74,7 @@ export const RetailerDetails = ({currentUser}) => {
                         <p>species: {flower.flower?.species}</p>
                         <p>color: {flower.flower?.color}</p>
                         <p>price: {flowerPrices(flower)} </p>
-                        <button data-retailerid={flower.retailerId} data-flowerid={flower.flowerId} onClick={handlePurchase}>purchase</button>
+                        <button data-retailerid={flower.retailerId} data-flowerid={flower.flowerId} data-price={flowerPrices(flower)} onClick={handlePurchase}>purchase</button>
                     </li>
                     )
                 })}
