@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Graduate';
+    src: url('/path/to/font/Graduate.ttf') format('truetype');
+  }
+  
+  .navbar-brand {
+    font-size: 24px;
+  }
+  
+  .navbar {
+    background-color: #212121;
+    border-bottom: 1px solid grey;
+    font-family: 'Graduate', sans-serif;
+  }
+
+  .homeIMG {
+    width: 30px;
+    margin-left: 10px;
+  }

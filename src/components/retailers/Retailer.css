@@ -1,0 +1,39 @@
+.retailer-card, header {
+    font-family: 'Graduate', sans-serif;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.flowerList, .distributorList, .nurseryList {
+    padding: 15px;
+    margin: 0 auto;
+    color: white;
+}
+
+.address {
+    color: white;
+}
+
+.retailers {
+    margin-top: 50px!important;
+    width: 40%;
+    font-family: 'Graduate', sans-serif;
+    color: white;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+.centered-line {
+    width: 80%;
+    border-bottom: 2px solid gray;
+    margin: 0 auto;
+    display: block;
+}
+
+.flowers p, .flowers h3 {
+    margin: 0;
+}
+
+.singleRetailer:hover {
+cursor: pointer;
+}

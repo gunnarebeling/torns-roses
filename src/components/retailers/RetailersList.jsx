@@ -18,16 +18,16 @@ export const RetailersList = () => {
         navigate(`${retailer.dataset.id}`)
     }
     return (
-        <div>
+        <div className="mt-5 pt-5">
             <div className="header p-3">
-                <header className="display-6 text-center ">Retailers</header>
+                <header className="display-6 text-center ">- Retailers -</header>
             </div>
-            <ul className="retailer-container list-unstyled">
+            <ul className="retailer-container list-unstyled mx-auto w-50">
                 {retailerList?.map(retailer => {
                     return (
                         
-                            <li className="border m-3 rounded p-2 text-center"  key={retailer.id} >
-                                <header data-id={`${retailer.id}`} onClick={handleRetailerClick}> {retailer.businessName}</header>
+                            <li className="border m-3 rounded p-2 text-center retailer-card mx-auto w-50"  key={retailer.id} >
+                                <h3 className="singleRetailer mb-0 mt-3" data-id={`${retailer.id}`} onClick={handleRetailerClick}> {retailer.businessName}</h3>
                                 <p>{retailer.address}</p>
                             </li>   
                         
