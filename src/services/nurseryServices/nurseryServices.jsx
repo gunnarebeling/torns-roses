@@ -10,3 +10,6 @@ export const getNurseryDistributors = (nurseryId) => {
     return fetch(`http://localhost:8088/nurseries_distributors?nurseryId=${nurseryId}&_expand=distributor`).then(res => res.json())
 }
 
+export const getAllNurseryFlowers = () => {
+    return fetch(`http://localhost:8088/flowers_nurseries`).then(res => res.json())
+}
