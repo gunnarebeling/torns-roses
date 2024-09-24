@@ -12,13 +12,13 @@ export const DistributorsList = () => {
     }, [])
 
     return (
-        <>
-            <h1>Distributors</h1>
+        <div className='distributors-list'>
+            <h2>Distributors</h2>
             {distributors.map(distributor => {
                 return (
                     <DistributorsItem distributor={distributor} key={distributor.id} />
                 )
             })}
-        </>
+        </div>
     )
 }
