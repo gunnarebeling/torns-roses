@@ -20,12 +20,12 @@ export const DistributorsItem = ({ distributor }) => {
     }, [])
 
     return (
-        <div className='distributors-item' key={distributor.id}>
+        <div className='distributors-item' >
             {distributor.name}
             <div className='flower-groups'>
             {distributorFlowers.map(flower => {
                 return (
-                    <div className='card'>
+                    <div className='card' key={flower.id}>
                         <h5>{flower.flower.species}</h5>
                         <p>Color: {flower.flower.color}</p>
                         <p>Price: ${(flower.price + (flower.price * flower.distributor.markup)).toFixed(2)}</p>
@@ -37,7 +37,7 @@ export const DistributorsItem = ({ distributor }) => {
                 <h6>These retailers buy from us:</h6>
                 {distributorRetailers.map(retailer => {
                     return (
-                        <div>
+                        <div key={retailer.id}>
                             {retailer.businessName}
                         </div>
                     )

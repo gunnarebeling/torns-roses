@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react"
 import { getNurseryFlowers } from "../../services/nurseryServices/nurseryServices"
 import { getNurseryDistributors } from "../../services/nurseryServices/nurseryServices"
+import { getDistributorFlowers } from "../../services/distributorServices/distributorServices"
 
 
 export const NurseryItem = ({ nursery }) => {
     const [flower, setFlower] = useState([])
     const [distributors, setDistributors] = useState([])
     useEffect(() => {
-        getNurseryFlowers(nursery.id).then(flowers => {
+        getDistributorFlowers(nursery.id).then(flowers => {
             setFlower(flowers)
             console.log(nursery)
         })
