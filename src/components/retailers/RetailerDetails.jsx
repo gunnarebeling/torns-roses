@@ -71,7 +71,7 @@ export const RetailerDetails = () => {
                     <p className="price fw-bold my-0 py-0">
                       {flowerPrices(flower)}{" "}
                     </p>
-                    {/* <button onClick={handlePurchase}>purchase</button> */}
+                     <button className="btn mt-2">Purchase</button> {/*onClick={handlePurchase} */}
                   </li>
                 );
               })}

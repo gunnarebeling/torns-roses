@@ -37,3 +37,12 @@
 .singleRetailer:hover {
 cursor: pointer;
 }
+
+.btn {
+    color: #e3ba4a;
+    border: 1px solid #e3ba4a;
+}
+
+.btn:hover {
+    border: 1px solid gray;
+}
