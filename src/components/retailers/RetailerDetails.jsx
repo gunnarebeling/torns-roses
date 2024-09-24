@@ -79,7 +79,7 @@ export const RetailerDetails = () => {
                     <h2>nurseries</h2>
                     { nurseries && nurseries.map(nursery => {
                         return (
-                            <li key={nursery.id}>{nursery?.businessName}</li>
+                            <li key={nursery.nurseryId}>{nursery?.businessName}</li>
                         )
                     })}
                 </ul>
