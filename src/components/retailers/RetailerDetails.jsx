@@ -6,6 +6,7 @@ import { getNurseryFlowers } from "../../services/nursaryServices/nursaryService
 export const RetailerDetails = () => {
     const [retailerInfo, setRetailerInfo] = useState([])
     const [nurseryFlowers, setNurseryFlowers] = useState([])
+    const [nurseries, setNurseries] = useState([])
 
     const {retailerId} = useParams()
 
@@ -18,7 +19,13 @@ export const RetailerDetails = () => {
         })
     }, [retailerId])
     useEffect(() => {
-
+        const retailersFilter = retailerInfo?.reduce((nurseryList,cur) => {
+            if (!nurseryList.some(item => item.nurseryId === cur.nurseryId)) {
+            nurseryList.push({nurseryId: cur.nurseryId, businessName: cur.nursery.businessName})
+            }
+            return nurseryList
+        }, [])
+        setNurseries(retailersFilter)
     }, [retailerInfo])
     const flowerPrices = (targetflower) => {
         const specificFlower= nurseryFlowers.find( flower => flower.flowerId === targetflower.flowerId && flower.nurseryId === targetflower.nurseryId)
@@ -56,6 +63,26 @@ export const RetailerDetails = () => {
                 })}
             </ul>
 
+            </div>
+            <div className="distributorList">
+                <ul className="text-center border mx-3 rounded list-unstyled">
+                    <h2>Distributor</h2>
+                    <li>
+                        <p>{retailerInfo[0]?.distributor?.name}</p>
+                    </li>
+            
+                </ul>
+            </div>
+            <div className="nurseryList">
+
+                <ul className="text-center border mx-3 p-2 rounded list-unstyled">
+                    <h2>nurseries</h2>
+                    { nurseries && nurseries.map(nursery => {
+                        return (
+                            <li key={nursery.nurseryId}>{nursery?.businessName}</li>
+                        )
+                    })}
+                </ul>
             </div>
         </div>
     )
