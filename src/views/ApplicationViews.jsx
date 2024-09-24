@@ -6,6 +6,7 @@ import { NavBar } from "../components/navbar/Navbar"
 import { NurseryList } from "../components/nurseries/NurseryList"
 import { DistributorsList } from "../components/distributors/DistributorsList"
 import { RetailerDetails } from "../components/retailers/RetailerDetails"
+import { ShoppingCart } from "../components/shoppingCart/ShoppingCart"
 import { useEffect, useState } from "react"
 
 
@@ -37,6 +38,7 @@ export const ApplicationViews = () => {
                     <Route index element={<RetailersList/>} />
                     <Route path=":retailerId" element={<RetailerDetails currentUser={currentUser}/>}/>
                 </Route>
+                <Route path="shoppingcart" element={<ShoppingCart currentUser={currentUser}/>}/>
                 
             </Route>
         </Routes>
