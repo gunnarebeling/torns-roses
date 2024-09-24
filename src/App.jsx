@@ -1,14 +1,24 @@
 import { BrowserRouter } from 'react-router-dom'
 import { ApplicationViews } from './views/ApplicationViews'
+import { Routes, Route } from 'react-router-dom'
+import { Login } from './components/auth/Login'
+import { Register } from './components/auth/Register'
+import { Authorized } from './views/Authorized'
 
 function App() {
   
 
   return (
-   <BrowserRouter>
-    <ApplicationViews/>
-   </BrowserRouter>
+    <Routes>
+      <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
 
+      <Route path='*' element={
+        <Authorized>
+            <ApplicationViews />
+        </Authorized>
+      } />
+    </Routes>
   )
 }
 

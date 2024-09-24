@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import { getNurseryFlowers } from "../../services/nurseryServices/nurseryServices"
 import { getNurseryDistributors } from "../../services/nurseryServices/nurseryServices"
-import '../../index.css'
 
 
 export const NurseryItem = ({ nursery }) => {
