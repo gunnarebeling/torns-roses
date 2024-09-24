@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getRetailerInfo } from "../../services/retailerServices/retailerServices"
-import { getNurseryFlowers } from "../../services/nursaryServices/nursaryServices"
+import { getNurseryFlowers } from "../../services/nurseryServices/nurseryServices"
 import { addToCart } from "../../services/shoppingCartServices/shoppingCartService"
 
 export const RetailerDetails = ({currentUser}) => {

@@ -20,7 +20,7 @@ export const DistributorsItem = ({ distributor }) => {
     }, [])
 
     return (
-        <div className='distributors-item'>
+        <div className='distributors-item' key={distributor.id}>
             {distributor.name}
             <div className='flower-groups'>
             {distributorFlowers.map(flower => {
