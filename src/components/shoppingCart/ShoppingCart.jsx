@@ -53,7 +53,7 @@ export const ShoppingCart = ({ currentUser }) => {
                   <div className="d-flex justify-content-center align-items-center">
                     <section>{flower?.species}</section>
                     <section className="ms-2 qty">({flower?.quantity})</section>
-                    <section className="price ms-2">${flower?.price}</section>
+                    <section className="price ms-2">${flower?.price.toFixed(2)}</section>
                   </div>
                   
                 </li>
