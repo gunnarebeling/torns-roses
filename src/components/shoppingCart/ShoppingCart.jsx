@@ -55,7 +55,6 @@ export const ShoppingCart = ({ currentUser }) => {
                     <section className="ms-2 qty">({flower?.quantity})</section>
                     <section className="price ms-2">${flower?.price.toFixed(2)}</section>
                   </div>
-                  
                 </li>
               );
             })}
