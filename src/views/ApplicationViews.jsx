@@ -13,6 +13,8 @@ import { useEffect, useState } from "react"
 
 export const ApplicationViews = () => {
    const [currentUser, setCurrentUser] = useState(0)
+   const [shoppingCart, setShoppingCart] =useState(false)
+
    useEffect(() => {
     const currentUserObj = localStorage.getItem('thorns_roses_user')
     const parsedCurrentUser = JSON.parse(currentUserObj)
@@ -26,7 +28,7 @@ export const ApplicationViews = () => {
                 path="/"
                 element={
                     <>
-                        <NavBar/>
+                        <NavBar shoppingCart={shoppingCart}/>
                         <Outlet/>
                         <Footer />
                     </>
@@ -36,7 +38,7 @@ export const ApplicationViews = () => {
                 <Route path='/distributors' element={<DistributorsList />} />
                 <Route path="/retailers">
                     <Route index element={<RetailersList/>} />
-                    <Route path=":retailerId" element={<RetailerDetails currentUser={currentUser}/>}/>
+                    <Route path=":retailerId" element={<RetailerDetails currentUser={currentUser} setShoppingCart={setShoppingCart} shoppingCart={shoppingCart}/>}/>
                 </Route>
                 <Route path="/shoppingcart" element={<ShoppingCart currentUser={currentUser}/>}/>
             </Route>

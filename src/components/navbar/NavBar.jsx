@@ -1,7 +1,22 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import { useState, useEffect } from "react";
+import { getUserCartCount } from "../../services/shoppingCartServices/shoppingCartService.js";
+import { ShoppingCart } from "../shoppingCart/ShoppingCart.jsx";
 
-export const NavBar = () => {
+export const NavBar = ({ shoppingCart }) => {
+  const [cartCount, setCartCount] = useState(0);
+
+  const currentUser = JSON.parse(localStorage.getItem("thorns_roses_user"));
+
+  useEffect(() => {
+    if (currentUser?.id) {
+      getUserCartCount(currentUser.id)
+        .then(setCartCount)
+        .catch((error) => console.error("Error fetching cart count:", error));
+    }
+  }, [currentUser, shoppingCart]);
+
   return (
     <nav className="navbar navbar-expand-lg fixed-top">
       {" "}
@@ -35,13 +50,19 @@ export const NavBar = () => {
               Retailers
             </Link>
           </div>
-          <div className="nav-item text-center">
-            <Link className="nav-link text-white" to="/shoppingcart">
-              Shopping Cart
+        </div>
+
+        <div className="col-4 d-flex justify-content-end align-items-center">
+          <div className="nav-item text-center d-flex align-items-center">
+            <Link
+              className="nav-link text-white bi bi-cart3 fs-5"
+              to="/shoppingcart"
+            >
+              <span className="ms-2">
+                (<span className="price fs-6">{cartCount}</span>)
+              </span>
             </Link>
           </div>
-        </div>
-        <div className="col-4 d-flex justify-content-end align-items-center">
           {localStorage.getItem("thorns_roses_user") ? (
             <li className="navbar-item navbar-logout">
               <Link

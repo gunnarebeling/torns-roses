@@ -4,12 +4,13 @@ import { getRetailerInfo } from "../../services/retailerServices/retailerService
 import { getAllNurseryFlowers } from "../../services/nurseryServices/nurseryServices";
 import { addToCart } from "../../services/shoppingCartServices/shoppingCartService";
 import "./Retailer.css";
+import { ShoppingCart } from "../shoppingCart/ShoppingCart";
 
-export const RetailerDetails = ({ currentUser }) => {
+
+export const RetailerDetails = ({ currentUser, setShoppingCart, shoppingCart }) => {
   const [retailerInfo, setRetailerInfo] = useState([]);
   const [nurseryFlowers, setNurseryFlowers] = useState([]);
   const [nurseries, setNurseries] = useState([]);
-  const [shoppingCart, setShoppingCart] = useState([]);
 
   const { retailerId } = useParams();
 
@@ -21,6 +22,7 @@ export const RetailerDetails = ({ currentUser }) => {
       setNurseryFlowers(res);
     });
   }, [retailerId]);
+
   useEffect(() => {
     const retailersFilter = retailerInfo?.reduce((nurseryList, cur) => {
       if (!nurseryList.some((item) => item.nurseryId === cur.nurseryId)) {
@@ -31,6 +33,7 @@ export const RetailerDetails = ({ currentUser }) => {
       }
       return nurseryList;
     }, []);
+
     setNurseries(retailersFilter);
   }, [retailerInfo]);
   const flowerPrices = (targetflower) => {
@@ -39,6 +42,7 @@ export const RetailerDetails = ({ currentUser }) => {
         flower.flowerId === targetflower.flowerId &&
         flower.nurseryId === targetflower.nurseryId
     );
+
     const specificFlowerPrice = specificFlower?.price;
     const distroMarkup = 1 + targetflower.distributor.markup;
     const retailMarkup = 1 + targetflower.retailer.markup;
@@ -50,6 +54,7 @@ export const RetailerDetails = ({ currentUser }) => {
 
     return priceInDollars;
   };
+
   const handlePurchase = (event) => {
     const targetPrice = event.target.dataset.price;
     const cleanedPriceString = targetPrice.replace(/[^0-9.-]+/g, "");
@@ -61,6 +66,7 @@ export const RetailerDetails = ({ currentUser }) => {
       price: priceFloat,
     };
     addToCart(cartObj);
+    setShoppingCart(!shoppingCart)
   };
 
   return (
@@ -81,9 +87,11 @@ export const RetailerDetails = ({ currentUser }) => {
                   <li key={flower.id} className="m-2">
                     <h3>{flower.flower?.species}</h3>
                     <p>color: {flower.flower?.color}</p>
-                    <p  className="price fw-bold my-0 py-0">{flowerPrices(flower)} </p>
+                    <p className="price fw-bold my-0 py-0">
+                      {flowerPrices(flower)}{" "}
+                    </p>
                     <button
-                    className="btn mt-2"
+                      className="btn mt-2"
                       data-retailerid={flower.retailerId}
                       data-flowerid={flower.flowerId}
                       data-price={flowerPrices(flower)}
