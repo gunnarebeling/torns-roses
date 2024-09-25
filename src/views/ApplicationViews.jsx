@@ -11,7 +11,6 @@ import { ShoppingCart } from "../components/shoppingCart/ShoppingCart"
 import { useEffect, useState } from "react"
 
 
-
 export const ApplicationViews = () => {
    const [currentUser, setCurrentUser] = useState(0)
    useEffect(() => {
@@ -40,7 +39,6 @@ export const ApplicationViews = () => {
                     <Route path=":retailerId" element={<RetailerDetails currentUser={currentUser}/>}/>
                 </Route>
                 <Route path="/shoppingcart" element={<ShoppingCart currentUser={currentUser}/>}/>
-                
             </Route>
         </Routes>
     )

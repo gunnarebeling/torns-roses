@@ -3,13 +3,19 @@ import "./NavBar.css";
 
 export const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg fixed-top"> {/* Add fixed-top and bg-dark for styling */}
+    <nav className="navbar navbar-expand-lg fixed-top">
+      {" "}
+      {/* Add fixed-top and bg-dark for styling */}
       <div className="container-fluid">
         <div className="col-4 d-flex justify-content-start align-items-center">
           <div className="navbar-brand">
             <Link className="nav-link text-white" to="/">
               <span className="text-white ms-3">THORNS-N-ROSES</span>
-              <img src="https://i.imgur.com/PHjQUbh.png" alt=""  className="homeIMG"/>
+              <img
+                src="https://i.imgur.com/PHjQUbh.png"
+                alt=""
+                className="homeIMG"
+              />
             </Link>
           </div>
         </div>
@@ -36,9 +42,22 @@ export const NavBar = () => {
           </div>
         </div>
         <div className="col-4 d-flex justify-content-end align-items-center">
-          <Link className="nav-link text-white me-3" to="/">
-            Logout
-          </Link>
+          {localStorage.getItem("thorns_roses_user") ? (
+            <li className="navbar-item navbar-logout">
+              <Link
+                className="navbar-link"
+                to=""
+                onClick={() => {
+                  localStorage.removeItem("thorns_roses_user");
+                  navigate("/", { replace: true });
+                }}
+              >
+                Logout
+              </Link>
+            </li>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </nav>

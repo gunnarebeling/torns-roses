@@ -17,3 +17,8 @@
     width: 30px;
     margin-left: 10px;
   }
+
+  a.navbar-link {
+    color: white;
+    text-decoration: none;
+  }
