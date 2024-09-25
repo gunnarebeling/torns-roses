@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import "./NavBar.css";
 import { useState, useEffect } from "react";
 import { getUserCartCount } from "../../services/shoppingCartServices/shoppingCartService.js";
-import { ShoppingCart } from "../shoppingCart/ShoppingCart.jsx";
 
 export const NavBar = ({ shoppingCart }) => {
   const [cartCount, setCartCount] = useState(0);
+  const [cartPulse, setCartPulse] = useState(false);
 
   const currentUser = JSON.parse(localStorage.getItem("thorns_roses_user"));
 
@@ -14,13 +14,15 @@ export const NavBar = ({ shoppingCart }) => {
       getUserCartCount(currentUser.id)
         .then(setCartCount)
         .catch((error) => console.error("Error fetching cart count:", error));
+
+      setCartPulse(true);
+      const timer = setTimeout(() => setCartPulse(false), 500);
+      return () => clearTimeout(timer);
     }
-  }, [currentUser, shoppingCart]);
+  }, [shoppingCart]);
 
   return (
     <nav className="navbar navbar-expand-lg fixed-top">
-      {" "}
-      {/* Add fixed-top and bg-dark for styling */}
       <div className="container-fluid">
         <div className="col-4 d-flex justify-content-start align-items-center">
           <div className="navbar-brand">
@@ -58,7 +60,7 @@ export const NavBar = ({ shoppingCart }) => {
               className="nav-link text-white bi bi-cart3 fs-5"
               to="/shoppingcart"
             >
-              <span className="ms-2">
+              <span className={`ms-2 cart-icon ${cartPulse ? 'pulse' : ''}`}>
                 (<span className="price fs-6">{cartCount}</span>)
               </span>
             </Link>
