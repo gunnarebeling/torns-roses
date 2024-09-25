@@ -29,18 +29,17 @@ export const Login = () => {
     }
   
     return (
-      <main className="container-login">
+      <main className="container-login mt-5 mx-auto pt-5">
         <section>
-          <form className="form-login" onSubmit={handleLogin}>
-            <h1>Thorns And Roses</h1>
-            <h2>Please sign in</h2>
+          <form className="form-login mx-auto text-center" onSubmit={handleLogin}>
+            <h1 className="text-center mb-5">Login to Thorns -N- Roses</h1>
             <fieldset>
               <div className="form-group">
                 <input
                   type="email"
                   value={email}
                   onChange={(evt) => set(evt.target.value)}
-                  className="form-control"
+                  className="form-control mx-auto"
                   placeholder="Email address"
                   required
                   autoFocus
@@ -53,7 +52,7 @@ export const Login = () => {
                   type="password"
                   value={password}
                   onChange={(evt) => setPassword(evt.target.value)}
-                  className="form-control"
+                  className="form-control  mx-auto"
                   placeholder="Password"
                   required
                   autoFocus
@@ -62,15 +61,15 @@ export const Login = () => {
             </fieldset>
             <fieldset>
               <div className="form-group">
-                <button className="login-btn btn-info" type="submit">
-                  Sign in
+                <button className="mt-3 login btn fw-bold" type="submit">
+                  SUBMIT
                 </button>
               </div>
             </fieldset>
           </form>
         </section>
-        <section>
-          <Link to="/register">Not a member yet?</Link>
+        <section className="text-center register mt-3">
+          <Link to="/register" className="register">Not a member yet?</Link>
         </section>
       </main>
     )

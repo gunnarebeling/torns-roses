@@ -1,9 +1,10 @@
+import "./Welcome.css"
+
 export const Welcome = () => {
     return (
-        <div className="card d-flex border justify-content-center align-items-center v" id="welcome-container">
-            <div className="text-center border p-3 border-2 rounded">
-                <h1>Welcome!</h1>
-                <h1>to thorns & roses</h1>
+        <div className="d-flex justify-content-center align-items-center mt-5 pt-3" id="welcome-container">
+            <div className="text-center mt-5">
+                <img src="https://i.imgur.com/PHjQUbh.png" alt="" className="w-75"/>
             </div>
         </div>
     )

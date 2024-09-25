@@ -1,0 +1,35 @@
+.distributors {
+    margin-bottom: 100px;
+}
+
+.distributors h1 {
+    font-family: 'Graduate', sans-serif;
+    color: white;
+}
+
+.distributor-list {
+    font-family: 'Graduate', sans-serif;
+    color: white;
+    /* border: 1px solid #ccc;
+    border-radius: 10px; */
+    width: 80%;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgb(83, 83, 83);
+}
+
+.flower-item {
+    width: 250px;
+    text-align: center;
+}
+
+.flower-item p {
+    margin: 0;
+}
+
+.price {
+    color: #e3ba4a;
+}
+
+.distributor-item p {
+    margin: 0;
+}

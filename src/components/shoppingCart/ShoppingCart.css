@@ -1,0 +1,16 @@
+.shopping-cart {
+    color: white;
+}
+
+.cart {
+    margin-top: 50px!important;
+    width: 40%;
+    font-family: 'Graduate', sans-serif;
+    color: white;
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+.qty {
+    font-size: 12px;
+}
