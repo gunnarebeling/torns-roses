@@ -20,7 +20,7 @@ export const NavBar = ({ shoppingCart }) => {
       return () => clearTimeout(timer);
     }
   }, [shoppingCart]);
-
+  
   return (
     <nav className="navbar navbar-expand-lg fixed-top">
       <div className="container-fluid">
