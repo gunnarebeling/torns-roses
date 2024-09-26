@@ -1,11 +1,28 @@
 import { Link } from "react-router-dom";
 import "./NavBar.css";
+import { useState, useEffect } from "react";
+import { getUserCartCount } from "../../services/shoppingCartServices/shoppingCartService.js";
 
-export const NavBar = () => {
+export const NavBar = ({ shoppingCart }) => {
+  const [cartCount, setCartCount] = useState(0);
+  const [cartPulse, setCartPulse] = useState(false);
+
+  const currentUser = JSON.parse(localStorage.getItem("thorns_roses_user"));
+
+  useEffect(() => {
+    if (currentUser?.id) {
+      getUserCartCount(currentUser.id)
+        .then(setCartCount)
+        .catch((error) => console.error("Error fetching cart count:", error));
+
+      setCartPulse(true);
+      const timer = setTimeout(() => setCartPulse(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [shoppingCart]);
+  
   return (
     <nav className="navbar navbar-expand-lg fixed-top">
-      {" "}
-      {/* Add fixed-top and bg-dark for styling */}
       <div className="container-fluid">
         <div className="col-4 d-flex justify-content-start align-items-center">
           <div className="navbar-brand">
@@ -35,13 +52,19 @@ export const NavBar = () => {
               Retailers
             </Link>
           </div>
-          <div className="nav-item text-center">
-            <Link className="nav-link text-white" to="/shoppingcart">
-              Shopping Cart
+        </div>
+
+        <div className="col-4 d-flex justify-content-end align-items-center">
+          <div className="nav-item text-center d-flex align-items-center">
+            <Link
+              className="nav-link text-white bi bi-cart3 fs-5"
+              to="/shoppingcart"
+            >
+              <span className={`ms-2 cart-icon ${cartPulse ? 'pulse' : ''}`}>
+                (<span className="price fs-6">{cartCount}</span>)
+              </span>
             </Link>
           </div>
-        </div>
-        <div className="col-4 d-flex justify-content-end align-items-center">
           {localStorage.getItem("thorns_roses_user") ? (
             <li className="navbar-item navbar-logout">
               <Link
